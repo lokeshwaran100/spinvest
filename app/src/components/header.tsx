@@ -5,10 +5,9 @@ export const Header = () => {
   return (
     <header role="banner" className="bg-gray-800 text-white">
       <div className="flex justify-between items-center p-4">
-        {/* Logo and App Name */}
         <div className="flex items-center space-x-2">
           <span role="img" title="Logo" className="text-2xl">🌐</span>
-          <h1 className="text-xl font-bold">App Name</h1>
+          <h3 className="text-xl font-bold">Spinvest</h3>
         </div>
 
         {/* Navigation Section */}

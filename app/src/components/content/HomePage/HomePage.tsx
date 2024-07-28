@@ -1,6 +1,11 @@
-// import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import StakeUsdcDialog from '../StakeDialog/StakeDialog';
+import UnstakeUsdcDialog from '../UnstakeDialog/UnstakeDialog';
 
 export function HomePage() {
+    const [isStakeDialogOpen, setIsStakeDialogOpen] = useState(false);
+    const [isUnstakeDialogOpen, setIsUnstakeDialogOpen] = useState(false);
+
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">Spinvest Dashboard</h1>
@@ -18,16 +23,27 @@ export function HomePage() {
                     <p>0 SOL</p>
                 </div>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex space-x-4">
                 <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
                     Upload Receipt
                 </button>
-                <a href="/stake">
-                    <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
-                        Stake USDC
-                    </button>
-                </a>
             </div>
+            <div className="flex space-x-4">
+                <button
+                    className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                    onClick={() => setIsStakeDialogOpen(true)}
+                >
+                    Stake USDC
+                </button>
+                <button
+                    className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                    onClick={() => setIsUnstakeDialogOpen(true)}
+                >
+                    Unstake USDC
+                </button>
+            </div>
+            <StakeUsdcDialog isOpen={isStakeDialogOpen} onClose={() => setIsStakeDialogOpen(false)} />
+            <UnstakeUsdcDialog isOpen={isUnstakeDialogOpen} onClose={() => setIsUnstakeDialogOpen(false)} />
         </div>
     );
 };
