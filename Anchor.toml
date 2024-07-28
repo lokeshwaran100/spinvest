@@ -7,12 +7,15 @@ skip-lint = false
 [programs.localnet]
 spinvest = "FRsx4yExdH2QPpQW8NL2ks6ngPec4J8XVKNwk84VEBz3"
 
+[programs.devnet]
+spinvest = "FRsx4yExdH2QPpQW8NL2ks6ngPec4J8XVKNwk84VEBz3"
+
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
-wallet = "~/.config/solana/id.json"
+cluster = "Devnet"
+wallet = "admin.json"
 
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"

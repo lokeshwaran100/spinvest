@@ -1,12 +1,12 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{self, Mint, MintTo, Token, TokenAccount, Transfer};
+use anchor_spl::token::{self, MintTo, Token, Transfer};
 // use spl_token::instruction::swap;
 use std::convert::Into;
 
-declare_id!("CcNLseQe96SRW9CFmxHFt2Die5SeZfPdLG9pFNmtoBaP");
+declare_id!("FRsx4yExdH2QPpQW8NL2ks6ngPec4J8XVKNwk84VEBz3");
 
-const SPINVEST_PDA_SEED: &[u8] = b"spinvesttest04";
-const USER_PDA_SEED: &[u8] = b"spinvestusertest04";
+const SPINVEST_PDA_SEED: &[u8] = b"spinvesttest05";
+const USER_PDA_SEED: &[u8] = b"spinvestusertest05";
 
 #[program]
 pub mod spinvest {
@@ -203,7 +203,7 @@ pub struct SubmitPurchase<'info> {
     pub user_token_account: AccountInfo<'info>,
     /// CHECK: This is the token that we want to mint
     #[account(mut)]
-    pub token_mint: Account<'info, Mint>,
+    pub token_mint: AccountInfo<'info>,
     /// CHECK: the authority of the mint account
     #[account(signer)]
     pub admin_account: AccountInfo<'info>,
@@ -226,10 +226,12 @@ pub struct Stake<'info> {
     pub user_pda_account: Account<'info, UserData>,
     #[account(mut)]
     pub user_account: Signer<'info>,
+    /// CHECK:
     #[account(mut)]
-    pub user_usdc_account: Account<'info, TokenAccount>,
+    pub user_usdc_account: AccountInfo<'info>,
+    /// CHECK:
     #[account(mut)]
-    pub spinvest_usdc_account: Account<'info, TokenAccount>,
+    pub spinvest_usdc_account: AccountInfo<'info>,
     pub token_program: Program<'info, Token>,
 }
 
@@ -253,8 +255,10 @@ pub struct Unstake<'info> {
     /// CHECK: This is the pda account to sign transfer
     #[account(mut)]
     pub user_usdc_account: AccountInfo<'info>,
+    /// CHECK:
     #[account(mut)]
-    pub spinvest_usdc_account: Account<'info, TokenAccount>,
+    pub spinvest_usdc_account: AccountInfo<'info>,
+    /// CHECK:
     #[account(signer)]
     pub admin_account: AccountInfo<'info>,
     pub token_program: Program<'info, Token>,

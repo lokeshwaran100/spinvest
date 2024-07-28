@@ -5,3 +5,28 @@ target
 node_modules
 test-ledger
 .yarn
+
+
+# dependencies
+/app/node_modules
+/app/.pnp
+/app.pnp.js
+
+# testing
+/app/coverage
+
+# production
+/app/build
+
+# misc
+/app.DS_Store
+/app.env.local
+/app/app.env.development.local
+/app.env.test.local
+/app.env.production.local
+
+/app/npm-debug.log*
+/app/yarn-debug.log*
+/app/yarn-error.log*
+
+yarn-error.log
