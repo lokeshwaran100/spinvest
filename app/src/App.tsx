@@ -101,14 +101,18 @@ const Content: FC = () => {
 
   return (
     <div className="App">
-      <Header />
-      {/* {pageContent("home")} */}
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/reports" element={<ReportsPage />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
+
+      <div className="flex flex-col min-h-screen">
+        <main className="flex-grow">
+          <Header />
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/reports" element={<ReportsPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
     </div>
   );
 };

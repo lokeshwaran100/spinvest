@@ -13,7 +13,6 @@ export function Footer() {
           </a>
           <a href="https://github.com/lokeshwaran100/spinvest" className="flex items-center hover:underline">
             <FaGithub className="text-xl mr-2" />
-            GitHub
           </a>
         </div>
       </div>
