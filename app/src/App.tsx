@@ -1,4 +1,5 @@
 import React, { FC, ReactNode, useEffect, useMemo, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
@@ -25,6 +26,7 @@ import { HomePage } from './components/content/HomePage/HomePage';
 import { Header } from './components/header';
 import { Footer } from './components/footer';
 import { NotFound } from './components/content/NotFound/NotFound';
+import ReportsPage from './components/content/ReportsPage/ReportsPage';
 
 require('./App.css');
 require('@solana/wallet-adapter-react-ui/styles.css');
@@ -34,7 +36,9 @@ const App: FC = () => {
   return (
     <Context>
       <AppProvider>
-        <Content />
+        <Router>
+          <Content />
+        </Router>
       </AppProvider>
     </Context>
   );
@@ -98,7 +102,12 @@ const Content: FC = () => {
   return (
     <div className="App">
       <Header />
-      {pageContent("home")}
+      {/* {pageContent("home")} */}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/reports" element={<ReportsPage />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
       <Footer />
     </div>
   );

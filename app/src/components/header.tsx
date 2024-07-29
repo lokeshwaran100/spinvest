@@ -13,8 +13,8 @@ export const Header = () => {
         {/* Navigation Section */}
         <div className="flex items-center space-x-4">
           <nav role="navigation" className="flex space-x-4">
-            <a href="/home" className="hover:text-gray-400">Home</a>
-            <a href="/report" className="hover:text-gray-400">Report</a>
+            <a href="/" className="hover:text-gray-400">Home</a>
+            <a href="/reports" className="hover:text-gray-400">Report</a>
           </nav>
           <WalletMultiButton />
         </div>
