@@ -23,27 +23,27 @@ export function HomePage() {
                     <p>0 SOL</p>
                 </div>
             </div>
-            <div className="flex space-x-4">
+            <div className="flex flex-col items-center space-y-4">
                 <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
                     Upload Receipt
                 </button>
-            </div>
-            <div className="flex space-x-4">
-                <button
-                    className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-                    onClick={() => setIsStakeDialogOpen(true)}
-                >
-                    Stake USDC
-                </button>
-                <button
-                    className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
-                    onClick={() => setIsUnstakeDialogOpen(true)}
-                >
-                    Unstake USDC
-                </button>
+                <div className="flex space-x-4">
+                    <button
+                        className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                        onClick={() => setIsStakeDialogOpen(true)}
+                    >
+                        Stake USDC
+                    </button>
+                    <button
+                        className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
+                        onClick={() => setIsUnstakeDialogOpen(true)}
+                    >
+                        Unstake USDC
+                    </button>
+                </div>
             </div>
             <StakeUsdcDialog isOpen={isStakeDialogOpen} onClose={() => setIsStakeDialogOpen(false)} />
             <UnstakeUsdcDialog isOpen={isUnstakeDialogOpen} onClose={() => setIsUnstakeDialogOpen(false)} />
         </div>
     );
-};
+}
