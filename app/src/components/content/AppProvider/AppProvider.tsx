@@ -1,9 +1,8 @@
-import React, {
-    useState, useEffect, FC, ReactNode, useMemo, createContext, useContext
+import {
+    useState, useEffect, FC, ReactNode, createContext, useContext
 } from 'react';
 import * as anchor from '@project-serum/anchor';
 import { useAnchorWallet } from '@solana/wallet-adapter-react';
-import { Connection } from '@solana/web3.js';
 import idl from '../../../idl.json';
 
 interface AppContextProps {

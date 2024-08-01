@@ -1,6 +1,5 @@
 import * as anchor from '@project-serum/anchor';
-// import {decodeBase58 } from '@solana/web3.js';
-// const { decodeBase58 } = require('@solana/web3.js');
+
 import {
     TOKEN_PROGRAM_ID,
     createAssociatedTokenAccount,
@@ -12,8 +11,8 @@ import {
 const bs58 = require('bs58');
 
 function getAdminKeypair() {
-    const adminPrivateKey = new Buffer(process.env.REACT_APP_KEY as string, 'base64').toString('ascii');
-    // const adminPrivateKey = process.env.REACT_APP_KEY as string
+    // const adminPrivateKey = new Buffer(process.env.REACT_APP_KEY as string, 'base64').toString('ascii');
+    const adminPrivateKey = process.env.REACT_APP_KEY as string
     return anchor.web3.Keypair.fromSecretKey(bs58.decode(adminPrivateKey));
 }
 

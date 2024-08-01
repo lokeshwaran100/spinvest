@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import StakeUsdcDialog from '../StakeDialog/StakeDialog';
 import UnstakeUsdcDialog from '../UnstakeDialog/UnstakeDialog';
 import { submitPurchase } from '../utils/apiRequests';

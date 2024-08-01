@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useEffect, useMemo, useState } from 'react';
+import { FC, ReactNode, useMemo } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react';
@@ -83,22 +83,7 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-
-type ContentProps = {
-  pageName: string;
-};
-
 const Content: FC = () => {
-
-  let pageContent = (page: string) => {
-    switch (page) {
-      case "home":
-        return (<HomePage />);
-      case "not-found":
-        return (<NotFound />);
-    }
-  };
-
   return (
     <div className="App">
 
