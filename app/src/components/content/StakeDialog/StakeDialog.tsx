@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
+import { stake } from '../utils/apiRequests';
+import { useAppContext } from '../AppProvider/AppProvider';
 
 // Define the interface for the component props
 interface StakeUsdcDialogProps {
@@ -8,11 +10,12 @@ interface StakeUsdcDialogProps {
 }
 
 const StakeUsdcDialog = ({ isOpen, onClose }: StakeUsdcDialogProps) => {
-    const [amount, setAmount] = useState('');
-    const { publicKey, signTransaction } = useWallet();
+    const [amount, setAmount] = useState(0);
+    const { program, userPublicKey } = useAppContext();
 
     const handleStake = async () => {
-        // Add logic for staking USDC
+        if (program && userPublicKey)
+            await stake(program, userPublicKey, amount);
     };
 
     if (!isOpen) return null;
@@ -25,7 +28,7 @@ const StakeUsdcDialog = ({ isOpen, onClose }: StakeUsdcDialogProps) => {
                     type="number"
                     placeholder="Enter amount"
                     value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    onChange={(e) => setAmount(parseInt(e.target.value))}
                     className="border border-gray-300 p-2 rounded w-full mb-4"
                 />
                 <div className="flex justify-end space-x-4">

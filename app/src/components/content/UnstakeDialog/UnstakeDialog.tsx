@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
+import { unstake } from '../utils/apiRequests';
+import { useAppContext } from '../AppProvider/AppProvider';
 
 // Define the interface for the component props
 interface UnstakeUsdcDialogProps {
@@ -8,11 +10,12 @@ interface UnstakeUsdcDialogProps {
 }
 
 const UnstakeUsdcDialog = ({ isOpen, onClose }: UnstakeUsdcDialogProps) => {
-    const [amount, setAmount] = useState('');
-    const { publicKey, signTransaction } = useWallet();
+    const [amount, setAmount] = useState(0);
+    const { program, userPublicKey } = useAppContext();
 
-    const handleStake = async () => {
-        // Add logic for staking USDC
+    const handleUnstake = async () => {
+        if (program && userPublicKey)
+            await unstake(program, userPublicKey, amount);
     };
 
     if (!isOpen) return null;
@@ -25,7 +28,7 @@ const UnstakeUsdcDialog = ({ isOpen, onClose }: UnstakeUsdcDialogProps) => {
                     type="number"
                     placeholder="Enter amount"
                     value={amount}
-                    onChange={(e) => setAmount(e.target.value)}
+                    onChange={(e) => setAmount(parseInt(e.target.value))}
                     className="border border-gray-300 p-2 rounded w-full mb-4"
                 />
                 <div className="flex justify-end space-x-4">
@@ -37,7 +40,7 @@ const UnstakeUsdcDialog = ({ isOpen, onClose }: UnstakeUsdcDialogProps) => {
                     </button>
                     <button
                         className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                        onClick={handleStake}
+                        onClick={handleUnstake}
                     >
                         Unstake
                     </button>

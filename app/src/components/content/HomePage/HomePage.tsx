@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
 import StakeUsdcDialog from '../StakeDialog/StakeDialog';
 import UnstakeUsdcDialog from '../UnstakeDialog/UnstakeDialog';
+import { submitPurchase } from '../utils/apiRequests';
+import { useAppContext } from '../AppProvider/AppProvider';
 
 export function HomePage() {
+    const { program, userPublicKey } = useAppContext();
+
     const [isStakeDialogOpen, setIsStakeDialogOpen] = useState(false);
     const [isUnstakeDialogOpen, setIsUnstakeDialogOpen] = useState(false);
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-2xl font-bold mb-4">Spinvest Dashboard</h1>
+            <h1 className="text-2xl font-bold mb-4">Dashboard</h1>
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                 <div className="bg-white shadow-md rounded-lg p-4">
                     <h2 className="text-xl font-semibold">Rewards Earned</h2>
@@ -29,9 +33,13 @@ export function HomePage() {
             </div>
             <div className="flex flex-col items-center space-y-4">
                 <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-                    onClick={() => { }}
+                    onClick={() => {
+                        if (program && userPublicKey) {
+                            submitPurchase(program, userPublicKey, 100)
+                        }
+                    }}
                 >
-                    Upload Spend Bill
+                    Upload Spent Bill
                 </button>
                 <div className="flex space-x-4">
                     <button
