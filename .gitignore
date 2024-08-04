@@ -19,14 +19,52 @@ test-ledger
 /app/build
 
 # misc
-/app.DS_Store
-/app.env.local
+/app/.env
+/app/.DS_Store
+/app/.env.local
 /app/app.env.development.local
-/app.env.test.local
-/app.env.production.local
+/app/.env.test.local
+/app/.env.production.local
 
 /app/npm-debug.log*
 /app/yarn-debug.log*
 /app/yarn-error.log*
 
 yarn-error.log
+
+
+
+# dependencies
+/app/nextjs/node_modules
+/app/nextjs/.pnp
+/app/nextjs.pnp.js
+/app/nextjs.yarn/install-state.gz
+
+# testing
+/app/nextjs/coverage
+
+# next.js
+/app/nextjs/.next/
+/app/nextjs/out/
+
+# production
+/app/nextjs/build
+
+# misc
+/app/nextjs.DS_Store
+/app/nextjs*.pem
+
+# debug
+/app/nextjsnpm-debug.log*
+/app/nextjsyarn-debug.log*
+/app/nextjsyarn-error.log*
+
+# local env files
+/app/nextjs.env*.local
+
+# vercel
+/app/nextjs.vercel
+
+# typescript
+/app/nextjs*.tsbuildinfo
+/app/nextjsnext-env.d.ts
