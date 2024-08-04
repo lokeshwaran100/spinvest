@@ -60,7 +60,8 @@ yarn-error.log
 /app/nextjsyarn-error.log*
 
 # local env files
-/app/nextjs.env*.local
+/app/nextjs/.env
+/app/nextjs/.env*.local
 
 # vercel
 /app/nextjs.vercel
