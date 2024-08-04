@@ -8,27 +8,27 @@ test-ledger
 
 
 # dependencies
-/app/node_modules
-/app/.pnp
-/app.pnp.js
+/app/reactjs/node_modules
+/app/reactjs/.pnp
+/app/reactjs/.pnp.js
 
 # testing
-/app/coverage
+/app/reactjs/coverage
 
 # production
-/app/build
+/app/reactjs/build
 
 # misc
-/app/.env
-/app/.DS_Store
-/app/.env.local
-/app/app.env.development.local
-/app/.env.test.local
-/app/.env.production.local
+/app/reactjs/.env
+/app/reactjs/.DS_Store
+/app/reactjs/.env.local
+/app/reactjs/app.env.development.local
+/app/reactjs/.env.test.local
+/app/reactjs/.env.production.local
 
-/app/npm-debug.log*
-/app/yarn-debug.log*
-/app/yarn-error.log*
+/app/reactjs/npm-debug.log*
+/app/reactjs/yarn-debug.log*
+/app/reactjs/yarn-error.log*
 
 yarn-error.log
 
