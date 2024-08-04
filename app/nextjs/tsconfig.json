@@ -31,9 +31,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
-    "src/app/layout.tsx.bkp",
-    "src/app/layout.tsx.bkp1"
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -11,29 +11,29 @@ import {
 const bs58 = require('bs58');
 
 function getAdminKeypair() {
-    // const adminPrivateKey = new Buffer(process.env.REACT_APP_KEY as string, 'base64').toString('ascii');
-    const adminPrivateKey = process.env.REACT_APP_KEY as string
+    // const adminPrivateKey = new Buffer(process.env.NEXT_PUBLIC_KEY as string, 'base64').toString('ascii');
+    const adminPrivateKey = process.env.NEXT_PUBLIC_KEY as string
     return anchor.web3.Keypair.fromSecretKey(bs58.decode(adminPrivateKey));
 }
 
 function getSpinvestPdaSeed() {
-    return process.env.REACT_APP_SPINVEST_SEED as string;
+    return process.env.NEXT_PUBLIC_SPINVEST_SEED as string;
 }
 
 function getUserPdaSeed() {
-    return process.env.REACT_APP_USER_SEED as string;
+    return process.env.NEXT_PUBLIC_USER_SEED as string;
 }
 
 function getProgramId() {
-    return new anchor.web3.PublicKey(process.env.REACT_APP_CONTRACT_ADDRESS as string);
+    return new anchor.web3.PublicKey(process.env.NEXT_PUBLIC_CONTRACT_ADDRESS as string);
 }
 
 function getProjectTokenAddress() {
-    return new anchor.web3.PublicKey(process.env.REACT_APP_PROJ_TOKEN_ADDRESS as string);
+    return new anchor.web3.PublicKey(process.env.NEXT_PUBLIC_PROJ_TOKEN_ADDRESS as string);
 }
 
 function getUsdcTokenAddress() {
-    return new anchor.web3.PublicKey(process.env.REACT_APP_USDC_TOKEN_ADDRESS as string);
+    return new anchor.web3.PublicKey(process.env.NEXT_PUBLIC_USDC_TOKEN_ADDRESS as string);
 }
 
 async function getUsdcTokenAccount(

@@ -1,15 +1,60 @@
 'use client';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAppContext } from "@/components/content/AppProvider/AppProvider";
 import StakeUsdcDialog from "@/components/content/StakeDialog/StakeDialog";
 import UnstakeUsdcDialog from "@/components/content/UnstakeDialog/UnstakeDialog";
 import { submitPurchase } from "@/components/content/utils/apiRequests";
+import axios from "axios";
 
 const Home = () => {
   const { program, userPublicKey } = useAppContext();
 
   const [isStakeDialogOpen, setIsStakeDialogOpen] = useState(false);
   const [isUnstakeDialogOpen, setIsUnstakeDialogOpen] = useState(false);
+  const [purchases, setPurchases] = useState([]);
+  const [users, setUsers] = useState([]);
+  // const [userId, setUserId] = useState('');
+  const [amount, setAmount] = useState(100);
+
+  const handleBillUpload = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+      if (program && userPublicKey) {
+
+        await submitPurchase(program, userPublicKey, amount);
+
+        const response = await axios.post('/api/purchases', {
+          userId: userPublicKey,
+          amount: Number(amount),
+        });
+
+        if (response.status === 201) {
+          console.log('Purchase added successfully');
+          setAmount(0);
+        } else {
+          console.error('Failed to add purchase');
+        }
+      }
+    } catch (error) {
+      console.error('Failed to add purchase', error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchPurchases = async () => {
+      const response = await axios.get('/api/purchases');
+      setPurchases(response.data.data);
+    };
+
+    const fetchUsers = async () => {
+      const response = await axios.get('/api/users');
+      setUsers(response.data.data);
+    };
+
+    fetchPurchases();
+    fetchUsers();
+  }, []);
 
   return (
     <div className="container mx-auto p-4">
@@ -34,11 +79,7 @@ const Home = () => {
       </div>
       <div className="flex flex-col items-center space-y-4">
         <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-          onClick={() => {
-            if (program && userPublicKey) {
-              submitPurchase(program, userPublicKey, 100)
-            }
-          }}
+          onClick={handleBillUpload}
         >
           Upload Spent Bill
         </button>
